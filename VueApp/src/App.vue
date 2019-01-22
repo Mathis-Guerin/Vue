@@ -1,13 +1,17 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <img class="vue-logo" src="./assets/logo.png">
+    <footer> </footer>
   </div>
 </template>
 
 <script>
+import footer from './Components/Footer.vue'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    footer
+  }
 }
 </script>
 
