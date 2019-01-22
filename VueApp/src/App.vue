@@ -1,16 +1,15 @@
 <template>
   <div id="app">
-    <img class="vue-logo" src="./assets/logo.png">
-    <footer> </footer>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
-import footer from './Components/Footer.vue'
+import Footer from './components/Footer.vue'
 export default {
   name: 'App',
   components: {
-    footer
+    Footer
   }
 }
 </script>
