@@ -1,15 +1,30 @@
 <template>
-  <div class="user-card">
-    <div>{{this.user.name}}</div>
-    <div>{{this.user.email}}</div>
-    <div>{{this.user.address.city}}</div>
-    <div>{{this.user.website}}</div>
+  <div class="card">
+    <div class="content">
+      <img class="right floated mini ui image" src="https://picsum.photos/200/?random">
+      <div class="header">{{this.user.name}}</div>
+      <div class="meta">{{this.user.email}}</div>
+      <div class="description">
+        <div>{{this.user.website}}</div>
+        <div>{{this.user.phone}}</div>
+      </div>
+    </div>
+    <div class="extra content right">
+      <button class="circular ui icon button red">
+        <i @click="deleteUser(user)" class="icon trash"></i>
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['user']
+  props: ['user'],
+  methods: {
+    deleteUser (user) {
+      this.$parent.deleteUser(user)
+    }
+  }
 }
 </script>
 
@@ -19,5 +34,9 @@ export default {
   margin: 20px;
   text-align: left;
   width: 200px;
+}
+
+.right {
+  text-align: right;
 }
 </style>

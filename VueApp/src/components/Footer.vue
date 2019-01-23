@@ -11,15 +11,13 @@ export default {
 
 <style scoped>
 #footer {
-  position: fixed;
-  bottom: 0;
   width: 100%;
   height: 150px;
   background-color: #00E676;
 }
 
 #footer img {
-  height: 100px;
+  height: 150px;
   padding: 25px;
 }
 </style>

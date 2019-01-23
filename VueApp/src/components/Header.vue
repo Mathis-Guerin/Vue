@@ -9,8 +9,10 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 #header {
     border-bottom: 2px solid #444;
+    padding: 20px;
+    background-color: #00E676;
 }
 </style>
