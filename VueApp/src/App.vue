@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header></Header>
-    <Content v-bind:counter="counter"></Content>
+    <Content></Content>
     <Footer></Footer>
   </div>
 </template>
