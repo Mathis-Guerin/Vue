@@ -38,6 +38,7 @@ export default {
     width: 100%;
     background-color: #efefef;
     padding: 20px 0;
+    border-bottom: 2px solid #444;
   }
 }
 </style>

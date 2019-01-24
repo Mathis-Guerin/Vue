@@ -29,13 +29,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.user-card {
-  display: inline-block;
-  margin: 20px;
-  text-align: left;
-  width: 200px;
-}
-
 .right {
   text-align: right;
 }
