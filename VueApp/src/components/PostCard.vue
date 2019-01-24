@@ -1,6 +1,6 @@
 <template>
-  <div class="item">
-    <div class="ui small image">
+  <div :class="{'item':display=='list', 'ui link card':display=='table'}">
+    <div class="ui image" :class="{'small':display=='list', 'medium':display=='table'}">
       <img :src="imageSrc">
     </div>
     <div class="content content-post">
@@ -8,7 +8,7 @@
       <div class="description">
         <div>{{this.post.body}}</div>
       </div>
-      <div class="extra content right">
+      <div class="extra content bottom-block">
         <button @click="like(post)" class="circular button-blue ui icon button">
           <i class="icon large red heart" :class="{outline: !this.isLiked}"></i>
         </button>
@@ -19,7 +19,7 @@
 
 <script>
 export default {
-  props: ['post'],
+  props: ['post', 'display'],
   data () {
     return {
       isLiked: false
@@ -53,5 +53,10 @@ export default {
   &:hover, &:focus {
     background-color: #bcd9ff;
   }
+}
+
+.bottom-block {
+  bottom: 0;
+  position: absolute;
 }
 </style>

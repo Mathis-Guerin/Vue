@@ -1,8 +1,12 @@
 <template>
   <div id="posts">
     <Compteur title="Nombre de posts à afficher" :counter="counter"> </Compteur>
-    <div v-if="posts && posts.length>0 && counter>=0" class="content-posts ui items">
-      <PostCard v-bind:key="post.id" v-for="post in posts.slice(0,counter)" :post="post">
+    <div class="posts-display">
+      <button class="ui icon button" @click="displayList"><i class="icon large list"></i></button>
+      <button class="ui icon button" @click="displayTable"><i class="icon large th"></i></button>
+    </div>
+    <div v-if="posts && posts.length>0 && counter>=0" class="content-posts ui" :class="{'items':display=='list', 'cards':display=='table'}">
+      <PostCard v-bind:key="post.id" v-for="post in posts.slice(0,counter)" :post="post" :display="display">
       </PostCard>
     </div>
   </div>
@@ -16,7 +20,8 @@ export default {
   data () {
     return {
       counter: 8,
-      posts: {}
+      posts: {},
+      display: 'list'
     }
   },
   components: {Compteur, PostCard},
@@ -33,6 +38,16 @@ export default {
     },
     reset () {
       this.counter = 0
+    },
+    displayList () {
+      this.display = 'list'
+      console.log(this.display)
+      return this.display
+    },
+    displayTable () {
+      this.display = 'table'
+      console.log(this.display)
+      return this.display
     }
   },
   mounted () {
@@ -48,5 +63,11 @@ export default {
 <style lang="scss" scoped>
 .content-posts {
   margin: 20px;
+  justify-content: center;
+}
+
+.posts-display {
+  text-align: right;
+  padding: 5px 20px;
 }
 </style>
