@@ -8,8 +8,8 @@
       <button class="ui button" @click="reset">Reset</button>
       <div v-if="counter<0" class='error'> Veuillez choisir un nombre positif</div>
     </div>
-    <div v-if="users && users.length>0" class="content-users ui four column doubling stackable grid container cards">
-      <UserCard v-if="counter>=0" v-bind:key="user.id" v-for="user in users.slice(0,counter)" :user="user">
+    <div v-if="users && users.length>0 && counter>=0" class="content-users ui four column doubling stackable grid container cards">
+      <UserCard v-bind:key="user.id" v-for="user in users.slice(0,counter)" :user="user">
       </UserCard>
     </div>
   </div>
@@ -65,14 +65,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#content {
-  height: 100%;
-  min-height: 740PX;;
-  width: 100%;
-  background-color: #efefef;
-  padding: 20px 0;
-}
-
 .content-compteur {
   border-bottom: 2px solid #444;
   padding-bottom: 20px;

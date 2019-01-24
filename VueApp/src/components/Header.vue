@@ -1,6 +1,8 @@
 <template>
     <div id="header">
         <h2>Tuto Vue</h2>
+        <router-link to="/"><button class="ui button">Users</button></router-link>
+        <router-link to="/posts"><button class="ui button">Posts</button></router-link>
     </div>
 </template>
 
