@@ -1,7 +1,7 @@
 <template>
   <div :class="{'item':display=='list', 'ui link card':display=='table'}">
     <div class="ui image" :class="{'small':display=='list', 'medium':display=='table'}">
-      <img :src="imageSrc">
+      <img @click="openImage(imageSrc)" :src="imageSrc">
     </div>
     <div class="content content-post">
       <div class="header">{{this.post.title}}</div>
@@ -28,12 +28,16 @@ export default {
   methods: {
     like (post) {
       this.isLiked = !this.isLiked
+    },
+    openImage (src) {
+      console.log('PostCard', src)
+      this.$parent.openImage(src)
     }
   },
   computed: {
     imageSrc: function () {
       const randomId = Math.floor(Math.random() * 101) * this.post.id
-      return `https://picsum.photos/200/200?image=${randomId}`
+      return `https://picsum.photos/700/700?image=${randomId}`
     }
   }
 
