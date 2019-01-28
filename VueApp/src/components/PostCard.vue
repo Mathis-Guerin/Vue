@@ -3,7 +3,7 @@
     <div class="ui image" :class="{'small':display=='list', 'medium':display=='table'}">
       <img @click="openImage(imageSrc)" :src="imageSrc">
     </div>
-    <div class="content content-post">
+    <div class="content content-post" :class="{'content-post-item': display=='list', 'content-post-card': display=='table'}">
       <div class="header">{{this.post.title}}</div>
       <div class="description">
         <div>{{this.post.body}}</div>
@@ -52,15 +52,20 @@ export default {
   padding: 15px !important;
 }
 
+.content-post-item {
+  max-height: 150px;
+}
+
 .button-blue {
-  background-color: #bcd9ff;
+  background-color: transparent;
   &:hover, &:focus {
     background-color: #bcd9ff;
   }
 }
 
 .bottom-block {
-  bottom: 0;
   position: absolute;
+  bottom: 0;
+  right: 0;
 }
 </style>

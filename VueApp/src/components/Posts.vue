@@ -11,12 +11,14 @@
         </PostCard>
       </div>
     </div>
-    <div v-if="displayImage" class="fullWidth-image">
-      <button class="circular ui huge white icon button">
-        <i @click="closeImage" class="x icon"></i>
-      </button>
-      <img :src="imageSrc"/>
-    </div>
+    <transition name="fade">
+      <div @click="closeImage" v-if="displayImage" class="fullWidth-image">
+        <button class="circular ui huge white icon button">
+          <i @click="closeImage" class="x icon"></i>
+        </button>
+        <img :src="imageSrc"/>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -88,8 +90,8 @@ export default {
 
 .fullWidth-image {
   width: 100%;
-  position: absolute;
-  top: 20%;
+  position: fixed;
+  top: 12%;
   margin: 20px;
 
   button {
@@ -110,5 +112,12 @@ export default {
 .fullWidth-background {
   opacity: 0.2;
   background: #dedede;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 </style>
