@@ -34,6 +34,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   data () {
     return {
@@ -45,6 +47,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['addName']),
     submit () {
       this.errors = []
 
@@ -68,6 +71,7 @@ export default {
         setTimeout(function () {
           that.$router.push('/')
         }, 1000)
+        this.addName(this.login)
       }
     }
   },

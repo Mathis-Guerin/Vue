@@ -25,8 +25,10 @@
 <script>
 import Compteur from './Compteur.vue'
 import PostCard from './PostCard.vue'
+import store from '../store/AppStore'
 
 export default {
+  store: store,
   data () {
     return {
       counter: 8,
