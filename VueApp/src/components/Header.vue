@@ -1,9 +1,10 @@
 <template>
     <div id="header">
-        <h2 v-if="name !== ''">Hello {{this.name}}</h2>
-        <h2 v-if="name === ''">Tuto Vue</h2>
+        <h2 v-if="login !== ''">Hello {{this.login}}</h2>
+        <h2 v-if="login === ''">Tuto Vue</h2>
         <router-link to="/"><button class="ui button">Users</button></router-link>
         <router-link to="/posts"><button class="ui button">Posts</button></router-link>
+        <router-link to="/profil"><button class="ui button">Profil</button></router-link>
         <router-link to="/connexion"><button class="ui icon button connexion"><i class="icon user"></i>Connexion</button></router-link>
     </div>
 </template>
@@ -15,7 +16,7 @@ import store from '../store/AppStore'
 export default {
   store: store,
   computed: {
-    ...Vuex.mapGetters(['name'])
+    ...Vuex.mapGetters(['login'])
   }
 }
 </script>

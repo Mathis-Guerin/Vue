@@ -47,7 +47,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['addName']),
+    ...mapActions(['addLogin']),
     submit () {
       this.errors = []
 
@@ -71,7 +71,7 @@ export default {
         setTimeout(function () {
           that.$router.push('/')
         }, 1000)
-        this.addName(this.login)
+        this.addLogin(this.login)
       }
     }
   },

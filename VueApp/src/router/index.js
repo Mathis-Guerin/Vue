@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Users from '@/components/Users'
 import Posts from '@/components/Posts'
 import Connexion from '@/components/Connexion'
+import Profil from '@/components/Profil'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/connexion',
       name: 'Connexion',
       component: Connexion
+    },
+    {
+      path: '/profil',
+      name: 'Profil',
+      component: Profil
     }
   ]
 })
