@@ -38,7 +38,7 @@ export default {
       imageSrc: ''
     }
   },
-  components: {Compteur, PostCard},
+  components: { Compteur, PostCard },
   methods: {
     increment () {
       if (this.counter === 10) {

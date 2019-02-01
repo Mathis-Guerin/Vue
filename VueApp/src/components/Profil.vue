@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import {mapState, mapActions} from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import store from '../store/AppStore'
 
 export default {

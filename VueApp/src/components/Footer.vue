@@ -1,6 +1,6 @@
 <template>
   <div id="footer">
-    <img class="vue-logo" src="../assets/logo.png">
+    <img class="vue-logo" src="../assets/img/logo.png">
   </div>
 </template>
 
@@ -9,7 +9,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 #footer {
   width: 100%;
   height: 150px;
