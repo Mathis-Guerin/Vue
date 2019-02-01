@@ -5,7 +5,7 @@
         <router-link to="/"><button class="ui button">Users</button></router-link>
         <router-link to="/posts"><button class="ui button">Posts</button></router-link>
         <router-link to="/profil"><button class="ui button">Profil</button></router-link>
-        <router-link to="/connexion"><button class="ui icon button connexion"><i class="icon user"></i>Connexion</button></router-link>
+        <router-link to="/connexion"><button @click="connexionFunction" class="ui icon button connexion"><i class="icon user"></i>{{connexionLabel}}</button></router-link>
     </div>
 </template>
 
@@ -16,7 +16,18 @@ import store from '../store/AppStore'
 export default {
   store: store,
   computed: {
-    ...Vuex.mapGetters(['login'])
+    ...Vuex.mapGetters(['login']),
+    connexionLabel: function () {
+      return this.login === '' ? 'Connexion' : 'Déconnexion'
+    }
+  },
+  methods: {
+    ...Vuex.mapActions(['addLogin']),
+    connexionFunction () {
+      if (this.login !== '') {
+        this.addLogin('')
+      }
+    }
   }
 }
 </script>
