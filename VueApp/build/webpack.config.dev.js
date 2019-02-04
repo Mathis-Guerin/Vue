@@ -2,6 +2,7 @@ const merge = require('webpack-merge')
 const baseConfig = require('./webpack.config.base.js')
 
 const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = merge(baseConfig, {
   mode: 'development',
@@ -17,7 +18,16 @@ module.exports = merge(baseConfig, {
   },
 
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     // Permet de faire du HMR.
+    new webpack.HotModuleReplacementPlugin(),
+    // HMR shows correct file names in console on update.
+    new webpack.NamedModulesPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
+    // https://github.com/ampedandwired/html-webpack-plugin
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'index.html',
+      inject: true
+    }),
   ]
 });

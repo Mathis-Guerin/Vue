@@ -69,7 +69,7 @@ module.exports = {
       {
         // Pour tous les fichiers se terminant par .js, on charge le loader babel.
         test: /\.js$/,
-        //TODO: exclude: /node_modules/,
+        exclude: /node_modules/,
         use: 'babel-loader'
       }
     ]
