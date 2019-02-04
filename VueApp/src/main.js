@@ -6,7 +6,7 @@ import router from './router'
 import Vuex from 'vuex'
 import store from './store/AppStore'
 
-Vue.config.productionTip = false
+// Vue.config.productionTip = false
 Vue.use(Vuex)
 
 /* eslint-disable no-new */
