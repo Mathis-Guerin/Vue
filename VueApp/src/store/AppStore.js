@@ -10,7 +10,8 @@ const state = {
   lastname: '',
   email: '',
   city: '',
-  phone: ''
+  phone: '',
+  darkMode: false
 }
 
 const mutations = {
@@ -40,6 +41,10 @@ const mutations = {
 
   ADD_PHONE: (state, phone) => {
     state.phone = phone
+  },
+
+  SET_DARKMODE: (state, darkMode) => {
+    state.darkMode = !darkMode
   }
 }
 
@@ -50,7 +55,8 @@ const getters = {
   lastname: (state) => state.lastname,
   email: (state) => state.email,
   city: (state) => state.city,
-  phone: (state) => state.phone
+  phone: (state) => state.phone,
+  darkMode: (state) => state.darkMode
 }
 
 const actions = {
@@ -74,6 +80,9 @@ const actions = {
   },
   addPhone: (store, phone) => {
     store.commit('ADD_PHONE', phone)
+  },
+  setDarkmode: (store, darkMode) => {
+    store.commit('SET_DARKMODE', darkMode)
   }
 }
 

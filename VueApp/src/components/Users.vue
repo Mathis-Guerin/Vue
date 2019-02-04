@@ -11,6 +11,7 @@
 <script>
 import UserCard from './UserCard.vue'
 import Compteur from './Compteur.vue'
+import Vuex from 'vuex'
 
 export default {
   data () {
@@ -18,6 +19,9 @@ export default {
       counter: 4,
       users: {}
     }
+  },
+  computed: {
+    ...Vuex.mapGetters(['darkMode'])
   },
   components: {
     UserCard, Compteur
@@ -56,6 +60,11 @@ export default {
 
 <style lang="scss" scoped>
 .content-users {
-  margin-top: 20px;
+  max-width: 1200px;
+  margin: 20px auto 0;
+}
+
+.content-dark-mode {
+  background-color: #1f2022;
 }
 </style>

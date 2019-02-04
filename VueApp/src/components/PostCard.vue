@@ -3,7 +3,7 @@
     <div class="ui image" :class="{'small':display=='list', 'medium':display=='table'}">
       <img @click="openImage(imageSrc)" :src="imageSrc">
     </div>
-    <div class="content content-post" :class="{'content-post-item': display=='list', 'content-post-card': display=='table'}">
+    <div class="content content-post" :class="{'content-post-item': display=='list', 'content-post-card': display=='table', 'content-post-card-dark': darkMode}">
       <div class="header">{{this.post.title}}</div>
       <div class="description">
         <div>{{this.post.body}}</div>
@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import Vuex from 'vuex'
+
 export default {
   props: ['post', 'display'],
   data () {
@@ -38,9 +40,9 @@ export default {
     imageSrc: function () {
       const randomId = Math.floor(Math.random() * 101) * this.post.id
       return `https://picsum.photos/700/700?image=${randomId}`
-    }
+    },
+    ...Vuex.mapGetters(['darkMode'])
   }
-
 }
 </script>
 
@@ -50,6 +52,14 @@ export default {
   text-align: left;
   background-color: #bcd9ff !important;
   padding: 15px !important;
+
+  &.content-post-card-dark {
+    background-color: #151f29 !important;
+
+    .header, .description {
+      color: white !important;
+    }
+  }
 }
 
 .content-post-item {

@@ -1,6 +1,6 @@
 <template>
   <div class="card user-card">
-    <div class="content">
+    <div class="content" :class="{'content-dark': darkMode}">
       <div class="extra content right">
         <button class="circular ui small white icon button">
           <i @click="deleteUser(user)" class="x icon"></i>
@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import Vuex from 'vuex'
+
 export default {
   props: ['user'],
   methods: {
@@ -28,7 +30,8 @@ export default {
     imageUrl: function () {
       const randomId = this.user.id
       return `http://lorempixel.com/g/200/200/people/${randomId}`
-    }
+    },
+    ...Vuex.mapGetters(['darkMode'])
   }
 }
 </script>
@@ -90,5 +93,9 @@ button {
     color: #fff;
     position: relative;
     margin: 10px auto 5px;
+}
+
+.content-dark {
+  background-color: #151f29 !important;
 }
 </style>

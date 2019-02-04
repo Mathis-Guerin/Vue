@@ -1,7 +1,7 @@
 <template>
   <div id="posts">
     <Compteur title="Nombre de posts à afficher" :counter="counter"> </Compteur>
-    <div :class="{'fullWidth-background': displayImage}">
+    <div class="posts-wrapper" :class="{'fullWidth-background': displayImage}">
       <div class="posts-display">
         <button class="ui icon button" @click="displayList"><i class="icon large list"></i></button>
         <button class="ui icon button" @click="displayTable"><i class="icon large th"></i></button>
@@ -80,6 +80,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.posts-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .content-posts {
   margin: 20px;
   justify-content: center;
