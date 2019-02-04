@@ -1,74 +1,29 @@
-'use strict'
-
-const { VueLoaderPlugin } = require('vue-loader')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const merge = require('webpack-merge')
+const baseConfig = require('./webpack.config.base.js')
 const path = require('path')
 
-function resolve (dir) {
-  return path.join(__dirname, '..', dir)
-}
 
-module.exports = {
+module.exports = merge(baseConfig, {
   mode: 'production',
 
-  entry: [
-    './src/main.js'
-  ],
-
-  resolve: {
-    extensions: ['.js', '.vue', '.json'],
-    alias: {
-      'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
-    }
-  },
+  // TODO : Afficher un hash pour le fichier d'output en prod (pour éviter les problème de cache)
+  /* 
+ */
 
   module: {
-    rules: [
-      {
-        test: /\.vue$/,
-        use: 'vue-loader'
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          'vue-style-loader',
-          'css-loader',
-          'sass-loader'
-        ]
-      },
-      {
-        test: /\.(js|vue)$/,
-        use: 'eslint-loader',
-        enforce: 'pre'
-      },
-      {
-        test: /\.(png|jpg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {},
-          },
-        ],
-      },
-      {
-        test: /\.js$/,
-        use: 'babel-loader'
-      }
-    ]
   },
+
   plugins: [
-    new VueLoaderPlugin(),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'index.html',
-      inject: true
+  /* // Extract imported CSS into own file
+    new ExtractTextPlugin('[name].bundle.[chunkhash].css'),
+    // Minify JS
+    new UglifyJsPlugin({
+      sourceMap: false,
+      compress: true,
     }),
-    new CopyWebpackPlugin([{
-      from: resolve('src/assets/img'),
-      to: resolve('dist/static/img'),
-      toType: 'dir'
-    }])
+    // Minify CSS
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+    }), */
   ]
-}
+});
