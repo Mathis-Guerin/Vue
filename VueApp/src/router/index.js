@@ -4,6 +4,7 @@ import Users from '@/components/Users'
 import Posts from '@/components/Posts'
 import Connexion from '@/components/Connexion'
 import Profil from '@/components/Profil'
+import Calculator from '@/components/Calculator'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/profil',
       name: 'Profil',
       component: Profil
+    },
+    {
+      path: '/calculator',
+      name: 'Calculator',
+      component: Calculator
     }
   ]
 })

@@ -6,6 +6,7 @@
         <router-link to="/posts"><button class="ui button">Posts</button></router-link>
         <router-link to="/profil"><button class="ui button">Profil</button></router-link>
         <router-link to="/connexion"><button @click="connexionFunction" class="ui icon button connexion"><i class="icon user"></i>{{connexionLabel}}</button></router-link>
+        <router-link to="/calculator"><button class="ui button">Calculette</button></router-link>
         <button @click="darkmodeclick" class="ui icon button"><i class="icon lightbulb"></i></button>
     </div>
 </template>
