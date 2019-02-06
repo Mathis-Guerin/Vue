@@ -2,25 +2,27 @@
     <div class="Calculator">
         <div class="Calculator-container">
             <div class="touch screen">
-                <input type="text"/>
+                <input :value="expression" type="text"/>
             </div>
             <div class="touch result">
-                Résultat
+                {{result}}
             </div>
-            <div class="touch touch-1">1</div>
-            <div class="touch touch-2">2</div>
-            <div class="touch touch-3">3</div>
-            <div class="touch touch-4">4</div>
-            <div class="touch touch-5">5</div>
-            <div class="touch touch-6">6</div>
-            <div class="touch touch-7">7</div>
-            <div class="touch touch-8">8</div>
-            <div class="touch touch-9">9</div>
-            <div class="touch touch-equal">=</div>
-            <div class="touch touch-plus">+</div>
-            <div class="touch touch-moins">-</div>
-            <div class="touch touch-divide">/</div>
-            <div class="touch touch-multiply">x</div>
+            <div @click="print(0)" class="touch touch-0">0</div>
+            <div @click="print(1)" class="touch touch-1">1</div>
+            <div @click="print(2)" class="touch touch-2">2</div>
+            <div @click="print(3)" class="touch touch-3">3</div>
+            <div @click="print(4)" class="touch touch-4">4</div>
+            <div @click="print(5)" class="touch touch-5">5</div>
+            <div @click="print(6)" class="touch touch-6">6</div>
+            <div @click="print(7)" class="touch touch-7">7</div>
+            <div @click="print(8)" class="touch touch-8">8</div>
+            <div @click="print(9)" class="touch touch-9">9</div>
+            <div @click="print(',')" class="touch touch-comma">,</div>
+            <div @click="calcul()" class="touch touch-equal">=</div>
+            <div @click="print('+')" class="touch touch-plus">+</div>
+            <div @click="print('-')" class="touch touch-moins">-</div>
+            <div @click="print('/')" class="touch touch-divide">/</div>
+            <div @click="print('*')" class="touch touch-multiply">x</div>
             <div class="touch touch-suppr">Suppr.</div>
             <div class="touch touch-square">²</div>
         </div>
@@ -28,8 +30,23 @@
 </template>
 
 <script>
-export default {
+import Math from 'mathjs'
 
+export default {
+  data () {
+    return {
+      expression: '',
+      result: ''
+    }
+  },
+  methods: {
+    print (touch) {
+      this.expression = this.expression.concat(touch)
+    },
+    calcul () {
+      this.result = Math.eval(this.expression)
+    }
+  }
 }
 </script>
 
@@ -40,8 +57,8 @@ export default {
 
 .Calculator-container {
     display: grid;
-    grid-template-columns: 60px 60px 60px 60px 60px 60px;
-    grid-template-rows: 180px 60px 60px 60px 60px;
+    grid-template-columns: 60px 60px 60px 60px 60px;
+    grid-template-rows: 180px 60px 60px 60px 60px 60px;
     width: 500px;
     margin: 0 auto;
     background: #efefef;
@@ -52,21 +69,33 @@ export default {
     .touch {
         height: 100%;
         width: 100%;
-        background-color: #cacaca;
         border: 2px solid #444;
         border-radius: 10px;
+        vertical-align: middle;
+        font-size: 20px;
+        line-height: 50px;
+        cursor: pointer;
     }
 
     .screen {
         grid-column: 1 / 7;
         grid-row: 1 / 2;
-        background-color: blue;
+
+        input {
+            height: 100%;
+            width: 100%;
+            border-radius: 11px;
+            background-color: #0f0f0f;
+            color: #F5F7FA;
+            text-align: right;
+            padding: 20px;
+        }
     }
 
     .result {
         grid-column: 1 / 7;
         grid-row: 2 / 3;
-        background-color: #ef1245;
+        background-color: #fef4a9;
     }
 
     @for $i from 1 through 3 {
@@ -74,6 +103,7 @@ export default {
             grid-column-start: $i;
             grid-column-end: $i +1;
             grid-row: 5;
+            background-color: #3b9a9c;
         }
     }
     @for $i from 4 through 6 {
@@ -81,6 +111,7 @@ export default {
             grid-column-start: $i -3;
             grid-column-end: $i -3;
             grid-row: 4;
+            background-color: #3b9a9c;
         }
     }
     @for $i from 7 through 9 {
@@ -88,42 +119,68 @@ export default {
             grid-column-start: $i -6;
             grid-column-end: $i -6;
             grid-row: 3 / 3;
+            background-color: #3b9a9c;
         }
-    }
-
-    .touch-equal {
-        grid-column: 4 / 7;
-        grid-row: 5 / 5;
     }
 
     .touch-plus {
         grid-column: 4 / 5;
-        grid-row: 4 / 4;
+        grid-row: 5 / 5;
     }
 
     .touch-moins {
         grid-column: 4 / 5;
-        grid-row: 3 / 3;
+        grid-row: 4 / 4;
     }
 
     .touch-multiply {
         grid-column: 5 / 6;
-        grid-row: 4 / 4;
+        grid-row: 5 / 5;
     }
 
     .touch-divide {
         grid-column: 5 / 6;
-        grid-row: 3 / 3;
-    }
-
-    .touch-suppr {
-        grid-column: 6 / 7;
         grid-row: 4 / 4;
     }
 
-    .touch-square {
-        grid-column: 6 / 7;
+    .touch-suppr {
+        grid-column: 5 / 6;
         grid-row: 3 / 3;
+    }
+
+    .touch-square {
+        grid-column: 4 / 5;
+        grid-row: 3 / 3;
+    }
+
+    .touch-0 {
+        grid-column: 1 / 2;
+        grid-row: 6 / 6;
+        background-color: #3b9a9c;
+    }
+
+    .touch-comma {
+        grid-column: 2 / 3;
+        grid-row: 6 / 6;
+    }
+
+    .touch-equal {
+        grid-column: 3 / 6;
+        grid-row: 6 / 6;
+    }
+
+    .touch-equal {
+        background-color: #78fee0
+    }
+
+    .touch-comma, .touch-plus, .touch-moins,
+    .touch-multiply, .touch-divide, .touch-square {
+        background-color: #4bc2c5;
+    }
+
+    .touch-suppr {
+        background-color: #ea7070;
+        font-size: 18px;
     }
 }
 </style>
