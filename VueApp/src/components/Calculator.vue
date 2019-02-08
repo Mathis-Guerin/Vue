@@ -1,9 +1,9 @@
 <template>
     <div>
         <div class="Calculator">
-            <div class="Calculator-container">
+            <div class="Calculator-container" :class="{'Calculator-container-dark': darkMode}">
                 <div class="touch screen">
-                    <input :value="expression" type="text"/>
+                    <input v-model="expression" type="text" @keyup.enter="calcul"/>
                 </div>
                 <div @click="copy()" class="touch result">
                     {{result}}
@@ -41,6 +41,7 @@
 
 <script>
 import Math from 'mathjs'
+import Vuex from 'vuex'
 
 export default {
   data () {
@@ -80,6 +81,9 @@ export default {
       console.log(index)
       this.expression = this.expression.concat(this.historic[index].result)
     }
+  },
+  computed: {
+    ...Vuex.mapGetters(['darkMode'])
   }
 }
 </script>
@@ -113,6 +117,14 @@ export default {
     grid-gap: 10px;
     place-items: center;
     place-content: center;
+
+    &.Calculator-container-dark {
+        background-color: #2c3e50;
+
+        .result {
+            color: #2c3e50;
+        }
+    }
 
     .touch {
         height: 100%;

@@ -2,11 +2,11 @@
     <div id="header">
         <h2 v-if="login !== ''">Hello {{this.login}}</h2>
         <h2 v-if="login === ''">Tuto Vue</h2>
-        <router-link to="/"><button class="ui button">Users</button></router-link>
-        <router-link to="/posts"><button class="ui button">Posts</button></router-link>
-        <router-link to="/profil"><button class="ui button">Profil</button></router-link>
+        <router-link to="/"><button class="ui icon button"><i class="icon id card"></i>Users</button></router-link>
+        <router-link to="/posts"><button class="ui icon button"><i class="icon image"></i>Posts</button></router-link>
+        <router-link to="/profil"><button class="ui icon button"><i class="icon user"></i>Profil</button></router-link>
         <router-link to="/connexion"><button @click="connexionFunction" class="ui icon button connexion"><i class="icon user"></i>{{connexionLabel}}</button></router-link>
-        <router-link to="/calculator"><button class="ui button">Calculette</button></router-link>
+        <router-link to="/calculator"><button class="ui icon button"><i class="icon calculator"></i>Calculette</button></router-link>
         <button @click="darkmodeclick" class="ui icon button"><i class="icon lightbulb"></i></button>
     </div>
 </template>
@@ -44,6 +44,12 @@ export default {
     padding: 20px;
     background-color: #00E676;
     color: #2c3e50;
+
+    i {
+      &.icon {
+        margin: 0 4px !important;
+      }
+    }
 
     .connexion {
         position: absolute;
