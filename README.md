@@ -1,5 +1,5 @@
 # Vue
-Personal project to learn Vue.js
+Personal projects to learn Vue.js
 
 # VueApp
 My first Vue application
